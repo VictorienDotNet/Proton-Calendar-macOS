@@ -5,10 +5,17 @@ A dedicated macOS app for [Proton Calendar](1). Proton Calendar no longer has th
 
 ## Behavior
 
-It"s a simple Webview that opens calendar.proton.me
+It’s a simple Webview that opens calendar.proton.me. It stays signed in and doesn't cache any app assets. It doesn't accept other URLs than proton.me and will open in an external browser any external website, like a Zoom meeting for example.
 
-## Run
+## Developement 
 
-1. Open `Package.swift` in Xcode (Xcode can run Swift Packages directly).
-2. Select the `ProtonCalendarWrapper` scheme and Run.
+This app was made with Cursor Agent. I review it, but be aware that I am not a macOS developer, rather a web developer. So the code might not be the most optimised and appropriate.
+
+In order to build the app, you need Xcode. Once you have it, you can prepare the build and create the package with the following command:
+
+```
+swift build -c release && ./scripts/package.sh
+```
+
+
 

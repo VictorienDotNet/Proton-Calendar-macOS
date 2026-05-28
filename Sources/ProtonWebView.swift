@@ -8,7 +8,7 @@ struct ProtonWebView: NSViewRepresentable {
 
     func makeNSView(context: Context) -> WKWebView {
         let config = WKWebViewConfiguration()
-        config.websiteDataStore = .nonPersistent()
+        config.websiteDataStore = .default()
         config.userContentController.add(context.coordinator, name: NotificationForwardingScript.messageHandlerName)
         config.userContentController.addUserScript(
             WKUserScript(
@@ -21,6 +21,14 @@ struct ProtonWebView: NSViewRepresentable {
         let webView = WKWebView(frame: .zero, configuration: config)
         webView.navigationDelegate = context.coordinator
         webView.allowsBackForwardNavigationGestures = true
+
+        // Keep sign-in across restarts (persistent cookies/storage),
+        // but clear volatile caches on launch to avoid "offline caching" behavior.
+        let cacheTypes: Set<String> = [
+            WKWebsiteDataTypeDiskCache,
+            WKWebsiteDataTypeMemoryCache
+        ]
+        WKWebsiteDataStore.default().removeData(ofTypes: cacheTypes, modifiedSince: .distantPast) {}
 
         webView.load(URLRequest(url: initialURL))
         return webView

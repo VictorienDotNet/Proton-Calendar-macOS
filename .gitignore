@@ -3,5 +3,6 @@
 .swiftpm/xcode/xcuserdata
 .swiftpm/xcode/xcshareddata/swiftpm/Package.resolved
 .build
+dist/
 DerivedData
 

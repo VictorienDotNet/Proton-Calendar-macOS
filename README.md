@@ -2,6 +2,8 @@
 
 A dedicated macOS app for [Proton Calendar](1). Proton Calendar no longer has the obligation to share its window with Proton Mail. You can now open Proton Calendar in a separate window. 
 
+[Download the App](https://link.victorien.net/proton-calendar-mac-os/app.zip)
+
 
 ## Behavior
 
